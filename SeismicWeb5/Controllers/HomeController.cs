@@ -47,6 +47,11 @@ namespace SeismicWeb5.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> GetDataFromFirebase()
         {
             try

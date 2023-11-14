@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FaultpointAlpha</title>
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="shortcut icon" type="x-icon" href="lib/images/faultpointlogo.png">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/lib/images/faultpointlogo.png" alt="faultpointlogo"></a>
+            <a class="navbar-brand webname" asp-area="" asp-controller="Home" asp-action="Index">FaultPoint Alpha</a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Monitor">Monitoring</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="EvacuationPath">Evacuation Path</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <ul class="accordion">
+        <li>
+            <input type="radio" name="accordion" id="first" checked>
+            <label for="first">What are earthquakes?</label>
+            <div class="content">
+                <p>Earthquakes are a natural phenomenon when there are two plates colliding or a sudden stress of the plate creating friction and its sudden release of energy to the ground</p>
+            </div>
+        </li>
+        <li>
+            <input type="radio" name="accordion" id="second">
+            <label for="second">What causes them?</label>
+            <div class="content">
+                <p>It is mostly about the tectonic plates and a sudden rapid movement created below the earth's crust that releases energy that makes the ground shake</p>
+            </div>
+        </li>
+        <li>
+            <input type="radio" name="accordion" id="third">
+            <label for="third">What to do when one occurs?</label>
+            <div class="content">
+                <p>Stop, drop, and roll!</p>
+            </div>
+        </li>
+        <li>
+            <input type="radio" name="accordion" id="fourth">
+            <label for="fourth">Earthquake Preparedness Plans</label>
+            <div class="content">
+                <p>Bring any necessities like water, food, communication devices, and flashlight</p>
+            </div>
+        </li>
+        <li>
+            <input type="radio" name="accordion" id="fifth">
+            <label for="fifth">Fun Facts!</label>
+            <div class="content">
+                <p>Did you know? that Philippines is one of the countries that are involved in the Pacific Ring of Fire the country next to us is Japan with their involvement on the Pacific Ring of Fire</p>
+            </div>
+        </li>
+    </ul>
+    <h1>Learn about the Earthquake Magnitude Scale!</h1>
+    <h5>Hover over each image!</h5>
+    <div class="container2">
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+            <ul class="slider" data-slides>
+                <li class="slide" data-active>
+                    <div class="mag1">
+                        <img src="/lib/images/1.jpeg">
+                        <p>Can only be detected by a seismograph. <br> People will feel no quakes.</p>
+                        <h3>0-1.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag2">
+                        <img src="/lib/images/2.jpeg">
+                        <p>Some people indoors wil feel <br> a slight quake.</p>
+                        <h3>2-2.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag3">
+                        <img src="/lib/images/3.jpeg">
+                        <p>Hanging objects might swing. <br> Comparable to the vibrations of a moving truck!</p>
+                        <h3>3-3.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag4">
+                        <img src="/lib/images/4.jpeg">
+                        <p>May break windows, cause small or, <br> unstable objects to fall.</p>
+                        <h3>4-4.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag5">
+                        <img src="/lib/images/5.jpeg">
+                        <p>Furniture moves, chunks of plaster <br> may fall from walls.</p>
+                        <h3>5-5.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag6">
+                        <img src="/lib/images/6.jpeg">
+                        <p>Damage to well-built structures, <br> severe damage to poorly built ones.</p>
+                        <h3>6-6.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag7">
+                        <img src="/lib/images/7.jpeg">
+                        <p>Buildings displaced from foundations; cracks in <br> the earth; underground pipes broken.</p>
+                        <h3>7-7.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag8">
+                        <img src="/lib/images/8.jpeg">
+                        <p>Bridges destroyed, <br> few structures left standing.</p>
+                        <h3>8-8.9 MAGNITUDE</h3>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="mag9">
+                        <img src="/lib/images/9.jpeg">
+                        <p>Near-total destruction, waves moving through <br> the earth visible with the naked eye.</p>
+                        <h3>9 and over</h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll("[data-carousel-button]")
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const offset = button.dataset.carouselButton === "next" ? 1 : -1
+                const slides = button
+                    .closest("[data-carousel]")
+                    .querySelector("[data-slides]")
+
+                const activeSlide = slides.querySelector("[data-active]")
+                let newIndex = [...slides.children].indexOf(activeSlide) + offset
+                if (newIndex < 0) newIndex = slides.children.length - 1
+                if (newIndex >= slides.children.length) newIndex = 0
+
+                slides.children[newIndex].dataset.active = true
+                delete activeSlide.dataset.active
+            })
+        })
+    </script>
+</body>
+</html>
