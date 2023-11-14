@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Seismic Monitoring";
+}
+
+@model List<SeismicWeb5.Controllers.DataModel>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<h1>@ViewData["Title"]</h1>
+<br />
+
+<div>
+    <canvas id="seismographChart" width="1200" height="600"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var ctx = document.getElementById('seismographChart').getContext('2d');
+    var seismographChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'gyroX',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: false
+                },
+                {
+                    label: 'gyroY',
+                    borderColor: 'rgb(75, 192, 192)',
+                    data: [],
+                    fill: false
+                },
+                {
+                    label: 'gyroZ',
+                    borderColor: 'rgb(54, 162, 235)',
+                    data: [],
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                },
+                y: {
+                    min: -5,
+                    max: 5
+                }
+            }
+        }
+    });
+
+
+    async function updateChart() {
+        try {
+            var response = await fetch('/Home/GetDataFromFirebase', {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                var data = await response.json();
+                if ("gyroX" in data && "gyroY" in data && "gyroZ" in data) {
+                    var timestamp = new Date().getTime();
+                    seismographChart.data.labels.push(timestamp);
+                    
+                    //var formattedTime = timestamp.toLocaleTimeString();
+                    //seismographChart.data.labels.push(formattedTime);
+                    //seismographChart.data.labels.push('');
+                    seismographChart.data.datasets[0].data.push(data.gyroX);
+                    seismographChart.data.datasets[1].data.push(data.gyroY);
+                    seismographChart.data.datasets[2].data.push(data.gyroZ);
+
+                    var maxDataPoints = 30;
+                    if (seismographChart.data.labels.length > maxDataPoints) {
+                        seismographChart.data.labels = seismographChart.data.labels.slice(-maxDataPoints);
+                        seismographChart.data.datasets[0].data = seismographChart.data.datasets[0].data.slice(-maxDataPoints);
+                        seismographChart.data.datasets[1].data = seismographChart.data.datasets[1].data.slice(-maxDataPoints);
+                        seismographChart.data.datasets[2].data = seismographChart.data.datasets[2].data.slice(-maxDataPoints);
+                    }
+
+                    seismographChart.update({
+                        preservation: true
+                    });
+                } else {
+                    console.error('Error: Unexpected data format from Firebase:', data);
+                }
+            } else {
+                console.error('Error fetching data from Firebase. Status:', response.status);
+            }
+            setTimeout(updateChart, 100);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+    updateChart();
+</script>
+</body>

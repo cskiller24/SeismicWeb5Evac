@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewData["Title"] = "EvacuationPath";
+}
+
+
+<div id="map" style="height: 90vh; width: 70vw">
+
+<script>
+    var map;
+    var evacuationSites;
+    var coordinates;
+    function initMap() {
+        var mapProp = {
+            center: { lat: 14.58662208198707, lng: 120.97741379178726 },
+            zoom: 8,
+        };
+        map = new google.maps.Map(document.getElementById("map"), mapProp);
+    }
+
+    function getCoordinates() {
+        navigator.geolocation.getCurrentPosition(position => {
+            coordinates = { lat: position.coords.latitude, lng: position.coords.longitude };
+        }, error => {
+            console.log("error getting coordinates")
+        })
+        
+    }
+
+    async function getEvacuationSites() {
+            var response = await fetch('https://seismoweb-9e2a6-default-rtdb.asia-southeast1.firebasedatabase.app/EvacuationSites.json', {
+            headers: {
+                'Accept': 'application/json'
+            }
+            }).then(response => {
+                if(! response.ok) {
+                    throw new Error("HTTP ERROR RESPONSE"); 
+                }
+
+                return response.json()
+            }).then(data => {
+                console.log(Object.values(data))
+                evacuationSites = Object.values(data)
+            })
+
+            evacuationSites.forEach(x => {
+                new google.maps.Marker({
+                    position: {lat: x.lat, lng: x.lng},
+                    map,
+                    title: x.name
+                })
+            })
+
+            drawEvacuationSite(evacuationSites, coordinates)
+    }
+
+    function getNearest(sites, origin) {
+        let nearestCoordinate = null;
+        let nearestDistance = Infinity;
+
+        for (const coordinate of sites) {
+            const latDiff = coordinate.lat - origin.lat;
+            const lngDiff = coordinate.lng - origin.lng;
+            const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
+
+            if (distance < nearestDistance) {
+                nearestCoordinate = coordinate;
+                nearestDistance = distance;
+            }
+        }
+
+        return { lat: nearestCoordinate.lat, lng: nearestCoordinate.lng };
+    }
+
+
+    function drawEvacuationSite(sites, origin) {
+        var nearest = getNearest(sites, origin)
+
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionService = new google.maps.DirectionsService();
+        console.log(nearest,origin)
+        directionService.route({
+            origin: new google.maps.LatLng(origin),
+            destination: new google.maps.LatLng(nearest),
+            travelMode: 'WALKING'
+        }, function (result, status) {
+            if (status == 'OK') {
+                directionsRenderer.setDirections(result)
+                directionsRenderer.setMap(map)
+                directionsRenderer.setPanel(null)
+            } else {
+                alert("Destination cannot be rendered")
+            }
+        })
+    }
+
+    getCoordinates();
+    getEvacuationSites();
+</script>
+</div>
