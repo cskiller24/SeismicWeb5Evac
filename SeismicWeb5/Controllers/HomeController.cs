@@ -2,16 +2,12 @@
 using Microsoft.Extensions.Logging;
 using SeismicWeb5.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 using Firebase.Database;
-using Firebase.Database.Query;
-using FirebaseAdmin.Auth;
 using Newtonsoft.Json;
-
+using Firebase.Auth;
 
 namespace SeismicWeb5.Controllers
 {
@@ -50,7 +46,8 @@ namespace SeismicWeb5.Controllers
         public IActionResult About()
         {
             return View();
-        }
+        }   
+
 
         public async Task<IActionResult> GetDataFromFirebase()
         {

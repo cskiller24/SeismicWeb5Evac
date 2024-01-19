@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yasuraoka\\source\\repos\\SeismicWeb5\\SeismicWeb5\\SeismicWeb5.csproj": {}
+    "C:\\Users\\Yasuraoka\\source\\Repos2\\SeismicWeb5Evac\\SeismicWeb5\\SeismicWeb5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yasuraoka\\source\\repos\\SeismicWeb5\\SeismicWeb5\\SeismicWeb5.csproj": {
+    "C:\\Users\\Yasuraoka\\source\\Repos2\\SeismicWeb5Evac\\SeismicWeb5\\SeismicWeb5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yasuraoka\\source\\repos\\SeismicWeb5\\SeismicWeb5\\SeismicWeb5.csproj",
+        "projectUniqueName": "C:\\Users\\Yasuraoka\\source\\Repos2\\SeismicWeb5Evac\\SeismicWeb5\\SeismicWeb5.csproj",
         "projectName": "SeismicWeb5",
-        "projectPath": "C:\\Users\\Yasuraoka\\source\\repos\\SeismicWeb5\\SeismicWeb5\\SeismicWeb5.csproj",
+        "projectPath": "C:\\Users\\Yasuraoka\\source\\Repos2\\SeismicWeb5Evac\\SeismicWeb5\\SeismicWeb5.csproj",
         "packagesPath": "C:\\Users\\Yasuraoka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yasuraoka\\source\\repos\\SeismicWeb5\\SeismicWeb5\\obj\\",
+        "outputPath": "C:\\Users\\Yasuraoka\\source\\Repos2\\SeismicWeb5Evac\\SeismicWeb5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yasuraoka\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[2.4.0, )"
             },
+            "FirebaseAuthentication.net": {
+              "target": "Package",
+              "version": "[3.7.1, )"
+            },
             "FirebaseDatabase.net": {
               "target": "Package",
               "version": "[4.2.0, )"
@@ -55,6 +59,10 @@
             "Google.Cloud.Firestore": {
               "target": "Package",
               "version": "[3.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

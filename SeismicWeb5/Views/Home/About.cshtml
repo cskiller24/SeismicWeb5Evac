@@ -39,24 +39,24 @@
     </header>
     <ul class="accordion">
         <li>
-            <input type="radio" name="accordion" id="first" checked>
-            <label for="first">What are earthquakes?</label>
-            <div class="content">
-                <p>Earthquakes are a natural phenomenon when there are two plates colliding or a sudden stress of the plate creating friction and its sudden release of energy to the ground</p>
+            <input type="radio" name="accordion" id="first" onclick="randomFact('eq-text')">
+            <label for="first" >What are earthquakes?</label>
+            <div class="content" >
+                <p id="eq-text">Earthquakes are a natural phenomenon when there are two plates colliding or a sudden stress of the plate creating friction and its sudden release of energy to the ground</p>
             </div>
         </li>
         <li>
-            <input type="radio" name="accordion" id="second">
+            <input type="radio" name="accordion" id="second" onclick="randomFact('eq-why')">
             <label for="second">What causes them?</label>
             <div class="content">
-                <p>It is mostly about the tectonic plates and a sudden rapid movement created below the earth's crust that releases energy that makes the ground shake</p>
+                <p id="eq-why">It is mostly about the tectonic plates and a sudden rapid movement created below the earth's crust that releases energy that makes the ground shake</p>
             </div>
         </li>
         <li>
-            <input type="radio" name="accordion" id="third">
+            <input type="radio" name="accordion" id="third" onclick="randomFact('eq-when')">
             <label for="third">What to do when one occurs?</label>
             <div class="content">
-                <p>Stop, drop, and roll!</p>
+                <p id="eq-when">Stop, drop, and roll!</p>
             </div>
         </li>
         <li>
@@ -67,10 +67,10 @@
             </div>
         </li>
         <li>
-            <input type="radio" name="accordion" id="fifth">
+            <input type="radio" name="accordion" id="fifth" onclick="randomFact('eq-facts')">
             <label for="fifth">Fun Facts!</label>
             <div class="content">
-                <p>Did you know? that Philippines is one of the countries that are involved in the Pacific Ring of Fire the country next to us is Japan with their involvement on the Pacific Ring of Fire</p>
+                <p id="eq-facts">Did you know? that Philippines is one of the countries that are involved in the Pacific Ring of Fire the country next to us is Japan with their involvement on the Pacific Ring of Fire</p>
             </div>
         </li>
     </ul>
@@ -166,6 +166,86 @@
                 delete activeSlide.dataset.active
             })
         })
+
+        const earthquakeFacts = [
+            "Earthquakes are caused by the sudden release of energy in the Earth's crust.",
+            "Earthquakes are a natural phenomenon when there are two plates colliding or a sudden stress of the plate creating friction and its sudden release of energy to the ground",
+            "Tsunamis can be triggered by underwater earthquakes, particularly in the Pacific Ocean's 'Ring of Fire.'",
+            "Seismographs are instruments that detect and record the vibrations produced by earthquakes.",
+        ];
+
+        const whyEarthquake = [
+            "Earthquakes are caused by the sudden release of energy in the Earth's crust.",
+            "The Earth's crust is divided into tectonic plates that constantly move, and earthquakes often occur along plate boundaries.",
+            "The main cause of earthquakes is the movement of tectonic plates, which can collide, pull apart, or slide past each other.",
+            "The point within the Earth where an earthquake originates is called the focus or hypocenter.",
+            "The point on the Earth's surface directly above the focus is called the epicenter.",
+            "Seismic waves, which are energy waves produced by earthquakes, travel through the Earth and can be detected by seismographs.",
+            "Volcanic activity can also cause earthquakes, known as volcanic earthquakes, due to the movement of magma beneath the Earth's surface.",
+            "Human activities, such as mining, reservoir-induced seismicity (due to the filling of large reservoirs), and underground nuclear tests, can induce artificial earthquakes.",
+            "The magnitude of an earthquake is measured using the Richter scale or the moment magnitude scale (Mw).",
+            "Earthquakes can have devastating effects on structures, landscapes, and communities, making them a significant natural hazard.",
+        ];
+
+        const tips = [
+            "Drop, Cover, and Hold On: Drop to the ground, take cover under a sturdy piece of furniture or against an interior wall, and hold on until the shaking stops.",
+            "Stay Indoors: If you are indoors, stay there. Avoid doorways, windows, and exterior walls. Stay away from heavy furniture, glass, and other items that may pose a threat.",
+            "Stay Low: If you can't find cover, stay low to the ground, and protect your head and neck with your arms.",
+            "If You Are Outside: Move to an open area away from buildings, trees, streetlights, and utility wires. Drop to the ground and protect your head and neck.",
+            "If You Are in a Vehicle: Pull over to a safe location away from overpasses, bridges, and buildings. Stay inside the vehicle until the shaking stops.",
+            "Be Prepared for Aftershocks: Aftershocks may follow the main quake. Be ready to Drop, Cover, and Hold On during aftershocks.",
+            "Have an Emergency Kit: Keep a well-stocked emergency kit with essential supplies, including water, non-perishable food, first aid supplies, flashlight, and important documents.",
+            "Stay Informed: Listen to emergency broadcasts, follow official instructions, and stay informed about the situation.",
+            "Help Others: Assist those who may need help, especially the elderly, disabled, or children.",
+            "Have an Emergency Plan: Develop and practice a family emergency plan so everyone knows what to do during an earthquake.",
+            "Check for Hazards: After the shaking stops, be cautious of potential hazards such as gas leaks, damaged electrical wires, and structural damage.",
+        ];
+
+        const funFacts = [
+            "The Richter scale measures the magnitude of an earthquake.",
+            "Earthquakes are caused by the sudden release of energy in the Earth's crust.",
+            "The largest earthquake ever recorded had a magnitude of 9.5.",
+            "Seismographs are instruments used to detect and record earthquakes.",
+            "Earthquakes can cause tsunamis if they occur under the ocean.",
+            "The 'Ring of Fire' is an area in the Pacific Ocean basin with a lot of earthquakes and volcanic activity.",
+            "Foreshocks are smaller earthquakes that can precede a larger main shock.",
+            "The term 'earthquake' is also known as a 'quake' or 'tremor.'",
+            "Aftershocks are smaller earthquakes that follow the main shock.",
+            "The San Andreas Fault in California is famous for its seismic activity.",
+            "The depth of an earthquake's focus can vary from shallow to deep within the Earth.",
+            "The moment magnitude scale is currently the most widely used measure for earthquake magnitude.",
+            "Animals, such as dogs and cats, may exhibit unusual behavior before an earthquake.",
+            "The term 'seismicity' refers to the frequency and distribution of earthquakes.",
+            "Earthquakes can cause liquefaction, where solid ground temporarily behaves like a liquid.",
+            "The intensity of an earthquake is measured by the Modified Mercalli Intensity (MMI) scale.",
+            "The 1906 San Francisco earthquake is one of the most famous in history.",
+            "The Great East Japan Earthquake in 2011 shifted the Earth's axis by a few inches.",
+            "The 'P' and 'S' waves are types of seismic waves generated by earthquakes.",
+            "Seismic retrofitting is the process of reinforcing buildings to withstand earthquakes."
+        ];
+
+        function randomFact(id) {
+            console.log("test")
+            if (id == "eq-text") {
+                const randomFact = earthquakeFacts[Math.floor(Math.random() * earthquakeFacts.length)];
+                document.getElementById("eq-text").innerHTML = randomFact;
+            }
+
+            if (id == "eq-why") {
+                const randomFact = whyEarthquake[Math.floor(Math.random() * whyEarthquake.length)];
+                document.getElementById("eq-why").innerHTML = randomFact;
+            }
+
+            if (id == "eq-when") {
+                const randomFact = tips[Math.floor(Math.random() * tips.length)];
+                document.getElementById("eq-when").innerHTML = randomFact;
+            }
+
+            if (id == "eq-facts") {
+                const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+                document.getElementById("eq-facts").innerHTML = randomFact;
+            }
+        }
     </script>
 </body>
 </html>

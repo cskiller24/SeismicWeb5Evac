@@ -15,6 +15,8 @@ using Google.Apis.Auth.OAuth2;
 using System.IO;
 
 using Google.Cloud.Firestore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 
 namespace SeismicWeb5
 {
@@ -43,9 +45,11 @@ namespace SeismicWeb5
                 return new FirebaseClient(firebaseUrl);
             });
 
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddScheme<AuthenticationSchemeOptions, FirebaseAuthenticationHandler>(JwtBearerDefaults.AuthenticationScheme);
             services.AddMvc();
             services.AddControllersWithViews();
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

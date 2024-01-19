@@ -69,7 +69,7 @@
             if (response.ok) {
                 var data = await response.json();
                 if ("gyroX" in data && "gyroY" in data && "gyroZ" in data) {
-                    var timestamp = new Date().getTime();
+                    var timestamp = new Date().getTime().toString();
                     seismographChart.data.labels.push(timestamp);
                     
                     //var formattedTime = timestamp.toLocaleTimeString();
